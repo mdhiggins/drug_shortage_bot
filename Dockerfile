@@ -1,7 +1,7 @@
 FROM python:3.11-alpine
 
-# Install dcron, tzdata, and busybox (for crond)
-RUN apk add --no-cache dcron tzdata busybox
+# Install dcron, tzdata
+RUN apk add --no-cache dcron tzdata
 
 # Set timezone
 ENV TZ=America/New_York
@@ -25,4 +25,4 @@ COPY crontab /etc/cron.d/drug_shortages
 RUN chmod 0644 /etc/cron.d/drug_shortages && crontab /etc/cron.d/drug_shortages && chown root:root /etc/cron.d/drug_shortages
 
 # Start cron in foreground
-CMD busybox syslogd -C; dcron -L 2 -f
+CMD ["crond", "-f", "-d", "8"]
