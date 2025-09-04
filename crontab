@@ -1,0 +1,1 @@
+0 9 * * 1 /app/venv/bin/python /app/drug_shortages.py --config /config/config.ini --drugs /config/drugs.txt --recipients /config/recipients.txt
