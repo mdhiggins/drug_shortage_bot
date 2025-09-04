@@ -25,4 +25,4 @@ COPY crontab /etc/cron.d/drug_shortages
 RUN chmod 0644 /etc/cron.d/drug_shortages && crontab /etc/cron.d/drug_shortages && chown root:root /etc/cron.d/drug_shortages
 
 # Start cron in foreground
-CMD ["crond", "-f", "-l", "8"]
+CMD busybox syslogd -C; dcron -L 2 -f
