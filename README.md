@@ -50,7 +50,7 @@ Create a docker-compose.yml file:
 ```yaml
 services:
   drug-shortages:
-    image: ghcr.io/mdhiggins/drug-shortage_bot:latest
+    image: ghcr.io/mdhiggins/drug_shortage_bot:latest
     container_name: drug-shortages-container
     restart: unless-stopped
     volumes:
