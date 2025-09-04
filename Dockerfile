@@ -25,4 +25,4 @@ COPY crontab /etc/cron.d/drug_shortages
 RUN chmod 0644 /etc/cron.d/drug_shortages && crontab /etc/cron.d/drug_shortages
 
 # Start cron in foreground
-CMD ["dcron", "-f", "-L", "15"]
+CMD sh -c "dcron -f -L 15"
