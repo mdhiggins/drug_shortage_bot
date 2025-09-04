@@ -25,4 +25,4 @@ COPY crontab /etc/cron.d/drug_shortages
 RUN chmod 0644 /etc/cron.d/drug_shortages && crontab /etc/cron.d/drug_shortages && chown root:root /etc/cron.d/drug_shortages
 
 # Start cron in foreground
-CMD ["/bin/bash", "-c", "crond && tail -f /dev/null"]
+CMD ["/bin/sh", "-c", "crond && tail -f /dev/null"]
