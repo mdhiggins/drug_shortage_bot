@@ -18,7 +18,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Parse command line arguments
-parser = argparse.ArgumentParser(description='Weekly Drug Shortages Summary Script')
+parser = argparse.ArgumentParser(description='Drug Shortages Summary Script')
 parser.add_argument('--config', default='config.ini', help='Path to the configuration file')
 parser.add_argument('--drugs', default='drugs.txt', help='Path to the drug keys file')
 parser.add_argument('--recipients', default='recipients.txt', help='Path to the recipients file')
@@ -117,7 +117,7 @@ def generate_summary():
             logger.warning(f"No data returned for key {key}")
             shortages.append(f"Key {key}: No Data")
 
-    summary = "Weekly Drug Shortages Summary:\n\n"
+    summary =  f"{EMAIL_SUBJECT}:\n\n"
     summary += "Shortages (Active, Not Found, or Other):\n" + ("\n".join(shortages) if shortages else "None\n")
     summary += "\n\nResolved Shortages:\n" + ("\n".join(resolved_shortages) if resolved_shortages else "None\n")
 
@@ -145,7 +145,7 @@ def send_email(summary):
         logger.error(f"Error sending email: {e}")
 
 if __name__ == "__main__":
-    logger.info("Starting weekly drug shortage check")
+    logger.info("Starting drug shortage check")
     summary = generate_summary()
     logger.info("Summary:\n%s", summary)
     send_email(summary)
